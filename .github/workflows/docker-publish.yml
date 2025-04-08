@@ -46,5 +46,5 @@ jobs:
         with:
           image-ref: ghcr.io/${{ github.repository }}:latest
           format: table
-          exit-code: 0  # 취약점 있어도 실패 처리하지 않음 (exit-code: 1로 하면 실패 처리됨)
+          exit-code: 1  # 취약점 있어도 실패 처리하지 않음 (exit-code: 1로 하면 실패 처리됨)
           ignore-unfixed: true
