@@ -40,3 +40,11 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Scan Docker image with Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ghcr.io/${{ github.repository }}:latest
+          format: table
+          exit-code: 0  # 취약점 있어도 실패 처리하지 않음 (exit-code: 1로 하면 실패 처리됨)
+          ignore-unfixed: true
